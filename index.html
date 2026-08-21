@@ -1,128 +1,360 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MIL Group 4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Chaos ✨</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#0b0b12;color:white;text-align:center}
-nav{padding:18px;background:#15151f;position:sticky;top:0}
-nav b{color:#ff4fa3;font-size:22px}
-.hero{padding:90px 20px;background:linear-gradient(135deg,#24112c,#101a35)}
-.hero h1{font-size:55px;margin:10px}
-.hero span{color:#ff4fa3}
-p{color:#bbb;line-height:1.6}
-.btn{display:inline-block;padding:13px 22px;margin:8px;border-radius:30px;
-background:#ff4fa3;color:white;text-decoration:none;border:0;font-weight:bold}
-section{padding:60px 20px}
-h2{font-size:34px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;max-width:850px;margin:auto}
-.card{background:#171722;border:1px solid #303044;padding:25px;border-radius:20px}
-.card:hover{border-color:#ff4fa3;transform:translateY(-4px)}
-.emoji{font-size:40px}
-.member{padding:20px;background:#15151f;border-radius:18px}
-footer{padding:35px;background:#07070b;color:#777}
-#quote{font-size:22px;color:#ff75b7}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #17152e, #32205c, #14142b);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, #ffffff18 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 70%, #ffffff15 0 2px, transparent 3px);
+  background-size: 70px 70px;
+  animation: stars 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-70px); }
+}
+
+.container {
+  width: 92%;
+  max-width: 700px;
+  margin: auto;
+  padding: 35px 10px 50px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 30px;
+  background: #ffffff18;
+  border: 1px solid #ffffff30;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(40px, 12vw, 70px);
+  line-height: .95;
+  margin-bottom: 12px;
+}
+
+h1 span {
+  color: #ffd95a;
+}
+
+.subtitle {
+  color: #d8d5e8;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.photo-card {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 25px;
+  background: #ffffff12;
+  border: 1px solid #ffffff30;
+  box-shadow: 0 20px 50px #00000050;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.photo-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #0000009c;
+  backdrop-filter: blur(8px);
+  font-weight: bold;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+button {
+  border: none;
+  padding: 17px 10px;
+  border-radius: 16px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffffff14;
+  border: 1px solid #ffffff30;
+  transition: .25s;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: #ffffff25;
+}
+
+button:active {
+  transform: scale(.94);
+}
+
+.twist {
+  margin-top: 22px;
+  min-height: 70px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #00000030;
+  border: 1px solid #ffffff20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #ffe98a;
+}
+
+.secret {
+  display: none;
+  margin-top: 25px;
+  padding: 25px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ff4ecd33, #ffd95a22);
+  border: 1px solid #ffffff30;
+  animation: pop .5s ease;
+}
+
+.secret h2 {
+  margin-bottom: 10px;
+}
+
+@keyframes pop {
+  0% { transform: scale(.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+footer {
+  margin-top: 30px;
+  color: #aaa6c0;
+  font-size: 12px;
+}
+
+.shake {
+  animation: shake .4s;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+@media(max-width: 500px) {
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-card img {
+    height: 240px;
+  }
+
+  .container {
+    padding-top: 25px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<nav>
-<b>MIL • GROUP 4</b>
-</nav>
+<div class="container">
 
-<div class="hero">
-<p>⚠️ OFFICIAL GROUP 4 FILE</p>
-<h1>WE ARE<br><span>MIL 4.</span></h1>
-<p>
-Four students. One group chat. Unlimited ideas.
-Somehow... we still finished the project. 😂
-</p>
-  <img src="team-photo.jpg" class="team-photo">" class="group-photo" alt="MIL Group 4">
-<a class="btn" href="#about">Enter the Chaos 🚀</a>
+  <div class="badge">⚠️ WARNING: CHAOTIC GROUP DETECTED</div>
+
+  <h1>TEAM <span>CHAOS</span></h1>
+
+  <p class="subtitle">
+    We came for the project.<br>
+    Somehow, we created this.
+  </p>
+
+  <div class="photo-card" id="photoCard">
+    <img src="team-photo.jpg" alt="Our Group Photo">
+    <div class="photo-label">
+      📸 The people responsible for everything
+    </div>
+  </div>
+
+  <div class="buttons">
+
+    <button onclick="meetUs()">
+      👀 Meet Us
+    </button>
+
+    <button onclick="dontTouch()">
+      🚫 Don't Touch
+    </button>
+
+    <button onclick="secret()">
+      🔐 Our Secret
+    </button>
+
+    <button onclick="finalTwist()">
+      🎁 Final Button
+    </button>
+
+  </div>
+
+  <div class="twist" id="twist">
+    👆 Touch a button. We dare you.
+  </div>
+
+  <div class="secret" id="secretBox">
+    <h2>🤫 SECRET UNLOCKED</h2>
+    <p>
+      Our biggest talent is looking productive
+      while absolutely nobody knows what's happening.
+    </p>
+  </div>
+
+  <footer>
+    Made with friendship, panic & questionable decisions. 😂
+  </footer>
+
 </div>
-  
- </style>
-  
-  .team-photo {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 12px;
+
+<script>
+
+let dontTouchCount = 0;
+
+function changeTwist(message) {
+  const box = document.getElementById("twist");
+
+  box.innerHTML = message;
+
+  box.classList.remove("shake");
+
+  void box.offsetWidth;
+
+  box.classList.add("shake");
 }
-<section id="about">
-<h2>WHO ARE WE? 🤨</h2>
-<p>A very professional team. Allegedly.</p>
 
-<div class="cards">
+function meetUs() {
 
-<div class="card">
-<div class="emoji">🧠</div>
-<h3>The Thinker</h3>
-<p>Has 50 ideas but forgets the original assignment.</p>
-</div>
+  changeTwist(
+    "👋 Congratulations! You have officially met the most unforgettable group on this website."
+  );
 
-<div class="card">
-<div class="emoji">📱</div>
-<h3>The Researcher</h3>
-<p>Says "I'll search it real quick" and disappears for 30 minutes.</p>
-</div>
+  const photo = document.getElementById("photoCard");
 
-<div class="card">
-<div class="emoji">🎨</div>
-<h3>The Designer</h3>
-<p>Changes the font 17 times because it "doesn't feel right."</p>
-</div>
+  photo.style.transform = "scale(1.03)";
 
-<div class="card">
-<div class="emoji">⏰</div>
-<h3>The Last-Minute Hero</h3>
-<p>Does nothing all day, then becomes productive at 11:59 PM.</p>
-</div>
+  setTimeout(() => {
+    photo.style.transform = "scale(1)";
+  }, 400);
+}
 
-</div>
-</section>
+function dontTouch() {
 
-<section style="background:#10101a">
-<h2>THE LEGENDARY MEMBERS 👥</h2>
-<p>Names hidden because we're mysterious. 😎</p>
+  dontTouchCount++;
 
-<div class="cards">
+  if (dontTouchCount === 1) {
 
-<div class="member">
-<div class="emoji">🧑‍💻</div>
-<h3>Member #1</h3>
-<p>Professional idea generator.</p>
-</div>
+    changeTwist(
+      "😏 You touched it. That's exactly what we told you NOT to do."
+    );
 
-<div class="member">
-<div class="emoji">📚</div>
-<h3>Member #2</h3>
-<p>Research warrior.</p>
-</div>
+  } else if (dontTouchCount === 2) {
 
-<div class="member">
-<div class="emoji">🎨</div>
-<h3>Member #3</h3>
-<p>Design specialist.</p>
-</div>
+    changeTwist(
+      "👀 Seriously? You came back?"
+    );
 
-<div class="member">
-<div class="emoji">🔥</div>
-<h3>Member #4</h3>
-<p>Emergency deadline specialist.</p>
-</div>
+  } else {
 
-</div>
-</section>
+    changeTwist(
+      "💀 Okay fine. You win. The button has officially given up."
+    );
+  }
+}
 
-<section>
-<h2>OUR MIL MISSION 🕵️</h2>
+function secret() {
 
-<div class="card">
-<p>
-We don't just use media and information.
-We question it, analyze it, and sometimes
-wonder why the teacher gave us this assignment. 😭
+  document.getElementById("secretBox").style.display = "block";
+
+  changeTwist(
+    "🔓 You found the secret. Please don't tell the other groups."
+  );
+
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
+}
+
+function finalTwist() {
+
+  changeTwist(
+    "🎉 WAIT... YOU ACTIVATED THE FINAL TWIST!"
+  );
+
+  setTimeout(() => {
+
+    document.body.style.background =
+      "linear-gradient(135deg, #ff4ecd, #5134ff, #11112b)";
+
+    document.querySelector("h1").innerHTML =
+      "YOU'RE PART OF <span>THE CHAOS</span> 😂";
+
+    document.querySelector(".subtitle").innerHTML =
+      "There is no escape now.<br>Welcome to the team.";
+
+    document.getElementById("secretBox").style.display = "block";
+
+    document.getElementById("secretBox").innerHTML = `
+      <h2>🎊 FINAL TWIST</h2>
+      <p>
+        You thought this was just a group website...
+        but you stayed long enough to become part of the story. 😭
+      </p>
+    `;
+
+  }, 800);
+}
+
+</script>
+
+</body>
+</html>
